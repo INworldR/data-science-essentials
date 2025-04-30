@@ -1,43 +1,41 @@
 # Data Science Essentials
 
-A comprehensive toolkit for data scientists providing essential utilities and workflows for data analysis and machine learning projects.
+A comprehensive data science project focusing on data analysis and machine learning.
+
+## Version
+Current Version: 0.1.0
 
 ## Project Structure
 
 ```
 data-science-essentials/
-├── data/
-│   ├── raw/          # Original, immutable data
-│   └── processed/    # Cleaned and processed data
-├── docs/             # Documentation files
-├── lib/              # Core library functions and classes
-├── report/           # Generated analysis and reports
-├── src/             # Source code for use in this project
-└── tests/           # Unit tests
+├── data/               # Datasets
+│   ├── raw/           # Raw data
+│   ├── processed/     # Processed data
+│   └── models/        # Saved models
+├── docs/              # Documentation
+├── src/               # Source code
+│   ├── data/         # Data processing
+│   ├── features/     # Feature engineering
+│   ├── models/       # Model development
+│   └── visualization/# Visualization
+├── tests/             # Tests
+├── notebooks/         # Jupyter Notebooks
+├── requirements.txt   # Python dependencies
+├── README.md         # Project description
+└── CHANGELOG.md      # Version history
 ```
 
 ## Features
 
-- Data cleaning and preprocessing utilities
-- Standardized data processing pipeline
-- Categorical data encoding
-- Feature scaling
-- Missing value handling
-- Duplicate removal
-- SQL-like operations with DuckDB (optional)
-- Automatic Titanic dataset loading from Kaggle
+- Data loading and processing
+- Feature engineering
+- Model development
+- Visualization
+- Automated testing
+- Documentation
 
-## Getting Started
-
-### Prerequisites
-
-- Python 3.x
-- pandas
-- scikit-learn
-- kaggle (optional, for downloading datasets)
-- duckdb (optional, for SQL operations)
-
-### Installation
+## Installation
 
 1. Clone the repository:
 ```bash
@@ -45,82 +43,32 @@ git clone https://github.com/yourusername/data-science-essentials.git
 cd data-science-essentials
 ```
 
-2. Create and activate a virtual environment:
+2. Create a virtual environment:
 ```bash
 python -m venv .venv
-source .venv/bin/activate  # On Unix/macOS
+source .venv/bin/activate  # Linux/Mac
+# or
+.venv\Scripts\activate     # Windows
 ```
 
-3. Install required packages:
+3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-### Kaggle Setup (Optional)
-
-To use the Kaggle dataset functionality:
-
-1. Create a Kaggle account at https://www.kaggle.com
-2. Go to "Account" → "Create API Token"
-3. Download `kaggle.json` and place it in `~/.kaggle/`
-4. Set appropriate permissions:
-```bash
-chmod 600 ~/.kaggle/kaggle.json
-```
-
 ## Usage
 
-### Loading Data
+1. Activate the virtual environment
+2. Run desired scripts from the `src` directory
+3. For interactive analysis, open Jupyter Notebooks in the `notebooks` directory
 
-```python
-from lib.core_classes import DataLoader, DataCleaner
+## Development
 
-# Load Titanic dataset (requires Kaggle setup)
-loader = DataLoader()
-
-# Or use mock data for testing
-loader = DataLoader(use_mock=True)
-
-# Or load local CSV file
-loader = DataLoader(filepath="data/raw/your_data.csv")
-
-# Get the data
-df = loader.df
-```
-
-### Data Cleaning
-
-```python
-# Initialize cleaner with data
-cleaner = DataCleaner(df)
-
-# Apply cleaning operations
-clean_df = cleaner.remove_duplicates()\
-                 .handle_missing_values(strategy='mean')\
-                 .encode_categorical(['category_column'])\
-                 .scale_features(['numeric_column'])\
-                 .get_clean_data()
-```
-
-### SQL Operations (with DuckDB)
-
-```python
-# Execute SQL queries on DataFrame
-result = cleaner.execute_sql("SELECT * FROM df WHERE column > 100")
-```
-
-## Testing
-
-Run the tests with:
-
-```bash
-python -m pytest tests/
-```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+- Use `git` for version control
+- Create new features in separate branches
+- Run tests before committing
+- Document changes in CHANGELOG.md
 
 ## License
 
-This project is licensed under the terms included in the LICENSE file.
+This project is licensed under the MIT License.
